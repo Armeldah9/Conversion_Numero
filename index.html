@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertion de Numero à chiffres</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1><U>SMART'ECH</U></h1>
+        <p class="Motif">Convertissez votre numéro à 10 chiffres</p>
+        <form action="#">
+            <SPan>Entrez votre numéro de téléphone actuel</SPan>
+            <input type="number" id="numéro" name="nom" autocomplete autofocus 
+            required placeholder="Entrez votre numéro"/>
+            <button type="button" onclick="test()">Convertir</button>
+        </form>
+        <p>Votre nouveau numéro est:</p>
+        <span id="afficher"></span>
+    </main>
+    <script>
+        var numOrange = ["07", "08", "09", "47", "48", "49", "77", "78", "79", "87", "88", "89"];
+        var numMtn = ["04", "05", "06", "44", "45", "46", "54", "55", "56", "64", "65", "66", "74", "75", "76", "84", "85", "86"];
+        var numMoov = ["01", "02", "03", "41", "42", "43", "51", "52", "53", "61", "62", "63", "71", "72", "73", "81", "82", "83"];
+
+        function test(){
+            var input = document.getElementById('numéro').value;
+            console.log(typeof input);
+            var verification = input[0] + input[1];
+
+            if (input.length === 8){
+                if((numOrange.includes(verification))){
+                    var conversion = "07" + input;
+                    console.log(conversion)
+                    document.getElementById('afficher').innerHTML = conversion;
+                }
+                else if((numMtn.includes(verification))){
+                    var conversion = "05" + input;
+                    document.getElementById('afficher').innerHTML = conversion;
+                }
+                else if((numMoov.includes(verification))){
+                    var conversion = "01" + input;
+                    document.getElementById('afficher').innerHTML = conversion;
+                }
+                else{
+                    document.getElementById('afficher').innerHTML = "Le numéro n'est pas attribué";
+                }
+            }
+            else{
+                    alert('Vous avez saisi un numéro invalide. \n veillez saisir un numéro correct à 8 chiffre');
+                }
+        }
+    </script>
+</body>
+</html>
